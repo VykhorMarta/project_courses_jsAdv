@@ -13,7 +13,11 @@ export class ListItemsComponent implements OnInit {
   constructor(private ItemsService: ItemService) { }
 
   ngOnInit() {
-    this.items = this.ItemsService.getAllItems();
+    this.ItemsService.getAllItems().subscribe(
+      res => {
+        this.items = res.json();
+      }
+    )
   }
 
 }
